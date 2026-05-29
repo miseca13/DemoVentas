@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendedor Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">&ltTu<span>logo&gt</span></div>
+  <ul>
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cart-btn" onclick="toggleCart()">
+     Mi pedido 🛒
+    <span class="cart-count" id="cartCountNav">0</span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Entregas inmediatas · 100% garantizado</div>
+  <h1>Todas tus plataformas<br>al <span>mejor precio</span></h1>
+  <p>Netflix, Spotify, ChatGPT, Disney+ y más. Elige lo que quieras, arma tu pedido y te lo activamos al instante.</p>
+  <div class="hero-actions">
+    <a href="#catalogo" class="btn-dark">Armar mi pedido</a>
+    <a href="https://wa.me/51999999999" class="btn-outline" target="_blank">Consultar por WhatsApp</a>
+  </div>
+  <div class="trust-row">
+    <div class="trust-item"><span class="trust-icon">✓</span> +500 clientes satisfechos</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Activación en minutos</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Reposición garantizada</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Soporte 7 días a la semana</div>
+  </div>
+</section>
+
+<section class="catalog-section" id="catalogo">
+  <div class="catalog-header">
+    <div class="section-label">Catálogo completo</div>
+    <div class="section-title">Elige uno o varios servicios</div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterCards('all',this)">Todos</button>
+      <button class="filter-btn" onclick="filterCards('video',this)">Streaming video</button>
+      <button class="filter-btn" onclick="filterCards('music',this)">Música</button>
+      <button class="filter-btn" onclick="filterCards('ai',this)">Inteligencia Artificial</button>
+      <button class="filter-btn" onclick="filterCards('tv',this)">TV / IPTV</button>
+      <button class="filter-btn" onclick="filterCards('gaming',this)">Gaming</button>
+      <button class="filter-btn" onclick="filterCards('other',this)">Otros</button>
+    </div>
+  </div>
+
+  <div class="products-grid" id="grid">
+
+    <div class="product-card" data-cat="video">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fff0f0">
+            <img src="https://cdn.simpleicons.org/netflix" alt="Netflix">
+        </div>
+        <span class="badge-cat badge-video">Video</span>
+      </div>
+      <div><h3>Netflix</h3><p class="desc">Series, películas y documentales en HD y 4K.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Netflix','Pantalla compartida · 1 mes',15)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 1 mes</span><span class="plan-price">S/ 15</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Netflix','Pantalla compartida · 3 meses',35)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 3 meses</span><span class="plan-price">S/ 35</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Netflix','Cuenta completa · 1 mes',45)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 1 mes</span><span class="plan-price">S/ 45</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="video">
+      <div class="card-top">
+        <div class="service-logo" style="background:#eff6ff">
+            <img src="https://img.icons8.com/?size=96&id=o7YMV0TFYOgR&format=png" alt="Disney+">
+        </div>
+        <span class="badge-cat badge-video">Video</span>
+      </div>
+      <div><h3>Disney+</h3><p class="desc">Marvel, Star Wars, Pixar y National Geographic.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Disney+','Pantalla compartida · 1 mes',12)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 1 mes</span><span class="plan-price">S/ 12</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Disney+','Pantalla compartida · 3 meses',30)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 3 meses</span><span class="plan-price">S/ 30</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Disney+','Cuenta completa · 1 mes',40)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 1 mes</span><span class="plan-price">S/ 40</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="video">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fdf4ff">
+            <img src="https://cdn.simpleicons.org/hbomax" alt="HBO Max">
+        </div>
+        <span class="badge-cat badge-video">Video</span>
+      </div>
+      <div><h3>HBO Max</h3><p class="desc">Game of Thrones, The Last of Us y todo el catálogo HBO.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'HBO Max','Pantalla compartida · 1 mes',13)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 1 mes</span><span class="plan-price">S/ 13</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'HBO Max','Pantalla compartida · 3 meses',32)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 3 meses</span><span class="plan-price">S/ 32</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'HBO Max','Cuenta completa · 1 mes',42)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 1 mes</span><span class="plan-price">S/ 42</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="video">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fff7ed">
+            <img src="https://img.icons8.com/?size=96&id=Rs68BrhxH0XZ&format=png" alt="Amazon Prime">
+        </div>
+        <span class="badge-cat badge-video">Video</span>
+      </div>
+      <div><h3>Prime Video</h3><p class="desc">The Boys, El Señor de los Anillos y más.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Prime Video','Pantalla compartida · 1 mes',10)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 1 mes</span><span class="plan-price">S/ 10</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Prime Video','Cuenta completa · 1 mes',28)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 1 mes</span><span class="plan-price">S/ 28</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Prime Video','Cuenta completa · 3 meses',70)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 3 meses</span><span class="plan-price">S/ 70</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="video">
+      <div class="card-top">
+        <div class="service-logo" style="background:#eff6ff">
+            <img src="https://cdn.simpleicons.org/paramountplus" alt="Paramount+">
+        </div>
+        <span class="badge-cat badge-video">Video</span>
+      </div>
+      <div><h3>Paramount+</h3><p class="desc">Yellowstone, Halo, Star Trek y más.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Paramount+','Pantalla compartida · 1 mes',10)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Pantalla compartida · 1 mes</span><span class="plan-price">S/ 10</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Paramount+','Cuenta completa · 1 mes',25)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Cuenta completa · 1 mes</span><span class="plan-price">S/ 25</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="music">
+      <div class="card-top">
+        <div class="service-logo" style="background:#f0fdf4">
+            <img src="https://cdn.simpleicons.org/Spotify" alt="Spotify">
+        </div>
+        <span class="badge-cat badge-music">Música</span>
+      </div>
+      <div><h3>Spotify Premium</h3><p class="desc">Música sin anuncios, offline y calidad máxima.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Spotify Premium','Individual · 1 mes',12)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 12</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Spotify Premium','Individual · 3 meses',30)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 30</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Spotify Premium','Familiar · 1 mes',22)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Familiar · 1 mes</span><span class="plan-price">S/ 22</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="music">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fff0f0">
+            <img src="https://cdn.simpleicons.org/youtube" alt="Youtube Premium">
+        </div>
+        <span class="badge-cat badge-music">Música</span>
+      </div>
+      <div><h3>YouTube Premium</h3><p class="desc">Sin anuncios, YouTube Music y videos en segundo plano.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'YouTube Premium','Individual · 1 mes',14)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 14</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'YouTube Premium','Individual · 3 meses',35)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 35</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'YouTube Premium','Familiar · 1 mes',24)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Familiar · 1 mes</span><span class="plan-price">S/ 24</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="ai">
+      <div class="card-top">
+        <div class="service-logo" style="background:#f0fdf4">
+            <img src="https://img.icons8.com/?size=100&id=FBO05Dys9QCg&format=png" alt="ChatGPT">
+        </div>
+        <span class="badge-cat badge-ai">IA</span>
+      </div>
+      <div><h3>ChatGPT Plus</h3><p class="desc">GPT-4o, imágenes con DALL·E y acceso prioritario.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'ChatGPT Plus','Individual · 1 mes',35)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 35</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'ChatGPT Plus','Individual · 3 meses',90)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 90</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="ai">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fff7ed">
+            <img src="https://img.icons8.com/?size=96&id=iWw83PVcBpLw&format=png" alt="Canva Pro">
+        </div>
+        <span class="badge-cat badge-ai">IA</span>
+      </div>
+      <div><h3>Canva Pro</h3><p class="desc">Diseño ilimitado, fondos removibles y plantillas premium.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Canva Pro','Individual · 1 mes',20)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 20</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Canva Pro','Individual · 3 meses',50)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 50</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Canva Pro','Equipo · 1 mes',35)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Equipo · 1 mes</span><span class="plan-price">S/ 35</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="tv">
+      <div class="card-top">
+        <div class="service-logo" style="background:#fdf4ff">
+            <img src="https://ia903201.us.archive.org/34/items/iptv-smarters-logo/Iptv%20Smarters%20Logo.jpg" alt="IPTv">
+        </div>
+        <span class="badge-cat badge-tv">IPTV</span>
+      </div>
+      <div><h3>IPTV Premium</h3><p class="desc">+10,000 canales en vivo: deportes, noticias, películas.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'IPTV Premium','1 pantalla · 1 mes',20)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">1 pantalla · 1 mes</span><span class="plan-price">S/ 20</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'IPTV Premium','1 pantalla · 3 meses',50)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">1 pantalla · 3 meses</span><span class="plan-price">S/ 50</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'IPTV Premium','1 pantalla · 6 meses',90)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">1 pantalla · 6 meses</span><span class="plan-price">S/ 90</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'IPTV Premium','1 pantalla · 12 meses',150)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">1 pantalla · 12 meses</span><span class="plan-price">S/ 150</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="gaming">
+      <div class="card-top">
+        <div class="service-logo" style="background:#f0fdf4">
+            <img src="https://w7.pngwing.com/pngs/765/892/png-transparent-xbox-logo-xbox-one-playstation-4-xbox-360-xbox-logo-electronics-computer-wallpaper-xbox-thumbnail.png" alt="Xbox">
+        </div>
+        <span class="badge-cat badge-gaming">Gaming</span>
+      </div>
+      <div><h3>Xbox Game Pass Ultimate</h3><p class="desc">+100 juegos en PC y consola, EA Play incluido.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Xbox Game Pass Ultimate','Individual · 1 mes',25)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 25</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Xbox Game Pass Ultimate','Individual · 3 meses',65)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 65</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="other">
+      <div class="card-top">
+        <div class="service-logo" style="background:#f0fdf4">
+            <img src="https://cdn.simpleicons.org/duolingo" alt="Duolingo">
+        </div>
+        <span class="badge-cat badge-other">Educación</span>
+      </div>
+      <div><h3>Duolingo Plus</h3><p class="desc">Idiomas sin anuncios, vidas ilimitadas y modo offline.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Duolingo Plus','Individual · 1 mes',15)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 1 mes</span><span class="plan-price">S/ 15</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Duolingo Plus','Individual · 3 meses',38)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Individual · 3 meses</span><span class="plan-price">S/ 38</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="product-card" style="border-color:#111110;background:#fafaf8" data-cat="other">
+      <div class="card-top">
+        <div class="service-logo" style="background:#111110;font-size:1.4rem">🔥</div>
+        <span class="badge-cat" style="background:#111110;color:#fff">Combo</span>
+      </div>
+      <div><h3>Combo Entretenimiento</h3><p class="desc">Netflix + Disney+ + Spotify. El más pedido.</p></div>
+      <div class="plan-list">
+        <label class="plan-row" onclick="togglePlan(this,'Combo Entretenimiento','Los 3 servicios · 1 mes',32)" style="background:#f0fdf4;border-color:var(--green-border)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Los 3 servicios · 1 mes</span><span class="plan-price">S/ 32</span></div>
+        </label>
+        <label class="plan-row" onclick="togglePlan(this,'Combo Entretenimiento','Los 3 servicios · 3 meses',80)" style="background:#f0fdf4;border-color:var(--green-border)">
+          <input type="checkbox"><div class="plan-info"><span class="plan-name">Los 3 servicios · 3 meses</span><span class="plan-price">S/ 80</span></div>
+        </label>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section" id="contacto">
+  <div class="section-label">¿No encuentras lo que buscas?</div>
+  <h2>Tenemos más servicios disponibles</h2>
+  <p>Escríbenos y te decimos si tenemos lo que necesitas. Respondemos en minutos.</p>
+  <a href="https://wa.me/51943669747?text=Hola,%20quiero%20consultar%20por%20un%20servicio" class="btn-white" target="_blank">
+    <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chatear por WhatsApp
+  </a>
+</section>
+
+<footer>
+  <div class="logo">&ltTu<span>logo&gt</span></div>
+  <div>© 2026 - IS Consultores</div>
+  <div>Atención 7 días · 9am – 10pm</div>
+</footer>
+
+<button class="cart-fab" id="cartFab" onclick="toggleCart()">
+  🛒 Ver pedido <span class="fab-count" id="fabCount">0</span>
+</button>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-handle">
+    <h3>🛒 Mi pedido</h3>
+    <button class="cart-close" onclick="toggleCart()">Cerrar ✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">Aún no has elegido nada.<br>Selecciona un plan del catálogo</div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total a pagar</span>
+      <span class="cart-total-amount" id="cartTotal">S/ 0</span>
+    </div>
+    <a href="#" class="cart-wpp-btn" id="cartWppBtn" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar pedido por WhatsApp
+    </a>
+    <button class="cart-clear" onclick="clearCart()">Vaciar carrito</button>
+  </div>
+</div>
+
+<script>
+var WHATSAPP_NUMBER = '51943669747';
+
+var cart = [];
+
+function togglePlan(label, service, plan, price) {
+  var cb = label.querySelector('input[type=checkbox]');
+
+  var id = service + '|' + plan;
+  var idx = cart.findIndex(function(i){ return i.id === id; });
+
+  if (idx > -1) {
+    cart.splice(idx, 1);
+    label.classList.remove('selected');
+    cb.checked = false;
+  } else {
+    cart.push({ id: id, service: service, plan: plan, price: price });
+    label.classList.add('selected');
+    cb.checked = true;
+  }
+
+  renderCart();
+  updateBadges();
+}
+
+function renderCart() {
+  var body = document.getElementById('cartBody');
+  var footer = document.getElementById('cartFooter');
+  var total = document.getElementById('cartTotal');
+  var wppBtn = document.getElementById('cartWppBtn');
+
+  if (cart.length === 0) {
+    body.innerHTML = '<div class="cart-empty">Aún no has elegido nada.<br>Selecciona un plan del catálogo 👆</div>';
+    footer.style.display = 'none';
+    return;
+  }
+
+  var html = '';
+  var sum = 0;
+  cart.forEach(function(item) {
+    sum += item.price;
+    html += '<div class="cart-item">' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + item.service + '</div>' +
+        '<div class="cart-item-plan">' + item.plan + '</div>' +
+      '</div>' +
+      '<span class="cart-item-price">S/ ' + item.price + '</span>' +
+      '<button class="cart-item-remove" onclick="removeItem(\'' + item.id.replace(/'/g,"\\'") + '\')" title="Quitar">✕</button>' +
+    '</div>';
+  });
+
+  body.innerHTML = html;
+  footer.style.display = 'block';
+  total.textContent = 'S/ ' + sum;
+
+  var msg = '¡Hola! Quiero hacer el siguiente pedido:\n\n';
+  cart.forEach(function(item) {
+    msg += '• ' + item.service + ' — ' + item.plan + ' (S/ ' + item.price + ')\n';
+  });
+  msg += '\n*Total: S/ ' + sum + '*\n\n¿Cómo procedo con el pago?';
+  wppBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+}
+
+function removeItem(id) {
+  cart = cart.filter(function(i){ return i.id !== id; });
+  // Desmarcar el checkbox visual
+  document.querySelectorAll('.plan-row.selected').forEach(function(row) {
+    var service = row.closest('.product-card').querySelector('h3').textContent;
+    var plan = row.querySelector('.plan-name').textContent;
+    if ((service + '|' + plan) === id) {
+      row.classList.remove('selected');
+      row.querySelector('input[type=checkbox]').checked = false;
+    }
+  });
+  renderCart();
+  updateBadges();
+}
+
+function clearCart() {
+  cart = [];
+  document.querySelectorAll('.plan-row.selected').forEach(function(row) {
+    row.classList.remove('selected');
+    row.querySelector('input[type=checkbox]').checked = false;
+  });
+  renderCart();
+  updateBadges();
+}
+
+function updateBadges() {
+  var n = cart.length;
+  var navCount = document.getElementById('cartCountNav');
+  var fab = document.getElementById('cartFab');
+  var fabCount = document.getElementById('fabCount');
+
+  if (n > 0) {
+    navCount.textContent = n;
+    navCount.classList.add('visible');
+    fab.classList.add('visible');
+    fabCount.textContent = n;
+  } else {
+    navCount.classList.remove('visible');
+    fab.classList.remove('visible');
+  }
+}
+
+function toggleCart() {
+  var drawer = document.getElementById('cartDrawer');
+  drawer.classList.toggle('open');
+}
+
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>
